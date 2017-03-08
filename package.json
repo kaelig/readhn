@@ -1,0 +1,25 @@
+{
+  "name": "hnreader",
+  "version": "1.0.0",
+  "description": "A Hackernews reader",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaelig/hnreader.git"
+  },
+  "author": "Kaelig Deloumeau-Prigent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaelig/hnreader/issues"
+  },
+  "homepage": "https://github.com/kaelig/hnreader#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "node-fetch": "^1.6.3",
+    "pug": "^2.0.0-beta11",
+    "url-parse": "^1.1.8"
+  }
+}

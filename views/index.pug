@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="styles.css")
+  body
+    h1 Top Stories
+    ul.top-stories
+      each story in stories
+        li.story(id= story.id)
+          a.story__action(href= story.instapaperUrl target= "_blank")
+            h2.story__title= story.title
+            div.story__hostname= story.hostname

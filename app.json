@@ -1,0 +1,14 @@
+{
+  "name": "Hacker News Reader",
+  "description": "A simple HN reader that's pretty simple and fast",
+  "keywords": [
+    "hacker news"
+  ],
+  "website": "https://github.com/kaelig/hnreader",
+  "repository": "https://github.com/kaelig/hnreader.git",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
