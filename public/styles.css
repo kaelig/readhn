@@ -44,7 +44,7 @@ body {
 }
 
 .story__action:visited {
-  color: var(color-light);
+  color: var(--color-light);
 }
 
 .top-stories {
