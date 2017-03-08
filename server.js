@@ -13,6 +13,7 @@ const startCase = sentence =>
 const pug = require('pug')
 const app = express()
 
+const port = process.env.PORT || 3000
 const NUMBER_OF_STORIES = 22
 
 app.set('view engine', 'pug')
@@ -71,6 +72,6 @@ app.get('/', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('App running on http://localhost:3000')
 })
