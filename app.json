@@ -4,8 +4,8 @@
   "keywords": [
     "hacker news"
   ],
-  "website": "https://github.com/kaelig/hnreader",
-  "repository": "https://github.com/kaelig/hnreader.git",
+  "website": "https://readhn.herokuapp.com",
+  "repository": "https://github.com/kaelig/readhn.git",
   "buildpacks": [
     {
       "url": "heroku/nodejs"

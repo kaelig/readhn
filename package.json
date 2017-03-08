@@ -1,5 +1,5 @@
 {
-  "name": "hnreader",
+  "name": "readhn",
   "version": "1.0.0",
   "description": "A Hackernews reader",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaelig/hnreader.git"
+    "url": "git+https://github.com/kaelig/readhn.git"
   },
   "author": "Kaelig Deloumeau-Prigent",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kaelig/hnreader/issues"
+    "url": "https://github.com/kaelig/readhn/issues"
   },
-  "homepage": "https://github.com/kaelig/hnreader#readme",
+  "homepage": "https://github.com/kaelig/readhn#readme",
   "dependencies": {
     "express": "^4.15.2",
     "node-fetch": "^1.6.3",
