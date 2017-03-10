@@ -1,7 +1,7 @@
 {
   "name": "readhn",
   "version": "1.0.0",
-  "description": "A Hackernews reader",
+  "description": "A Hacker News reader",
   "main": "index.js",
   "scripts": {
     "test": "jest"
