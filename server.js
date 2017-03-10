@@ -14,7 +14,7 @@ const pug = require('pug')
 const app = express()
 
 const port = process.env.PORT || 3000
-const NUMBER_OF_STORIES = 1
+const NUMBER_OF_STORIES = 25
 
 app.set('view engine', 'pug')
 app.use(express.static('public'))
@@ -24,7 +24,7 @@ const getStory = (id) =>
     .then(data => data.json())
     .catch(reason => console.error(reason))
 
-const getStories = (numberOfStories = 3) =>
+const getStories = (numberOfStories = 50) =>
   fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
     .then(data => data.json())
     .then(topStories => topStories.slice(0, numberOfStories))
@@ -37,7 +37,8 @@ const formLinkedStoryObject = ({
   title,
   time,
   url,
-  score
+  score,
+  by
 }) =>
   ({
     id,
@@ -45,7 +46,7 @@ const formLinkedStoryObject = ({
     time,
     url,
     score,
-    author,
+    by,
     hostname: URL(url).hostname,
     instapaperUrl: `https://www.instapaper.com/text?u=${encodeURIComponent(url)}`
   })

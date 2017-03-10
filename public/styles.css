@@ -61,7 +61,7 @@ body {
   font-weight: 400;
 }
 
-.story__hostname {
+.story__meta {
   color: var(--color-light);
 }
 
