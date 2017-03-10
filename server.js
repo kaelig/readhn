@@ -2,7 +2,9 @@
 
 const fetch = require('node-fetch')
 const express = require('express')
-const URL = require('url-parse');
+const URL = require('url-parse')
+const moment = require('moment')
+const log = require('debug')('readhn')
 
 const capitalizeFirstLetter = word =>
   word.charAt(0).toUpperCase() + word.slice(1)
@@ -43,6 +45,7 @@ const formLinkedStoryObject = ({
   ({
     id,
     title: startCase(title),
+    relativeDate: moment.unix(time).fromNow(),
     time,
     url,
     score,
@@ -70,6 +73,7 @@ const getTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
 app.get('/', (req, res) => {
   getTopStoriesWithLinks()
     .then(stories => {
+      log(stories)
       res.render('index', { stories })
     })
 })

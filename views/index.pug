@@ -20,5 +20,5 @@ html
         article.story(id= `story-${story.id}`)
           a.story__action(href= story.instapaperUrl)
             h2.story__title= story.title
-            div.story__meta= `${story.hostname} – ${story.by}`
+            div.story__meta= `${story.hostname} – ${story.by} – ${story.relativeDate}`
     script(src="app.js")
