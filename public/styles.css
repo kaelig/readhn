@@ -49,7 +49,7 @@ body {
 .story__action:hover,
 .story__action:focus {
   color: var(--color-link-hover);
-  background: rgba(0, 0, 0, 0.05)
+  background: rgba(0, 0, 0, 0.05);
 }
 .story__action:visited {
   color: var(--color-light);
