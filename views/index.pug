@@ -6,10 +6,19 @@ html
     link(rel="stylesheet", href="styles.css")
     meta(name="viewport", content="initial-scale=1")
   body
-    h1 Top Stories
-    ul.top-stories
+    h1#top-stories.page-title Hacker News Top Stories
+    nav.main-navigation(role="navigation")
+      ul.u-list-inline.u-list-reset
+        li
+          a(href="https://hn.algolia.com", accesskey="s") Search
+        li
+          a(href="/") Refresh
+        li
+          a(href="/") Hackernews
+    section.top-stories(aria-labelledby="top-stories")
       each story in stories
-        li.story(id= story.id)
-          a.story__action(href= story.instapaperUrl target= "_blank")
+        article.story(id= `story-${story.id}`)
+          a.story__action(href= story.instapaperUrl)
             h2.story__title= story.title
             div.story__hostname= story.hostname
+    script(src="app.js")

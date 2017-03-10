@@ -1,9 +1,9 @@
 :root {
-  --color-background: rgb(248, 242, 227);
-  --color-body: #222;
-  --color-link: #444;
+  --color-background: #F8F2E3;
+  --color-body: #242424;
+  --color-link: #242424;
   --color-link-hover: #0074bf;
-  --color-light: rgb(146, 145, 142);
+  --color-light: #81807c;
 
   --spacing-small: .333333rem;
   --spacing-medium: .5rem;
@@ -12,7 +12,6 @@
 }
 
 html {
-  /*font-size: 120%;*/
   background-color: var(--color-background);
   font-family: Georgia;
 }
@@ -23,33 +22,37 @@ body {
   padding-left: var(--spacing-large);
   padding-right: var(--spacing-large);
 }
+
+.page-title {
+  font-weight: normal;
+}
+
+.main-navigation a {
+  color: var(--color-light);
+}
+
 .story {
   margin: var(--spacing-small) 0;
 }
+
 .story__action {
   display: block;
   text-decoration: none;
   padding: var(--spacing-medium);
   margin-left: calc(var(--spacing-medium) * -1);
+  outline: none;
+  transition: all .15s ease-in-out;
 }
-
 .story__action:link {
   color: var(--color-link);
 }
-
 .story__action:hover,
 .story__action:focus {
-  color: #0074bf;
+  color: var(--color-link-hover);
   background: rgba(0, 0, 0, 0.05)
 }
-
 .story__action:visited {
   color: var(--color-light);
-}
-
-.top-stories {
-  list-style: none;
-  padding: 0;
 }
 
 .story__title {
@@ -60,4 +63,16 @@ body {
 
 .story__hostname {
   color: var(--color-light);
+}
+
+.u-list-reset {
+  list-style: none;
+  padding: 0;
+}
+
+.u-list-inline > li {
+  display: inline-block;
+}
+.u-list-inline > li + li {
+  margin-left: 1rem;
 }
