@@ -24,13 +24,11 @@ app.use(express.static('public'))
 const getStory = (id) =>
   fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
     .then(data => data.json())
-    .catch(reason => console.error(reason))
 
 const getStories = (numberOfStories = 50) =>
   fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
     .then(data => data.json())
     .then(topStories => topStories.slice(0, numberOfStories))
-    .catch(reason => console.error(reason))
 
 const isLinkedStory = story => !!story.url
 
@@ -67,7 +65,6 @@ const getTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
           .slice(0, numberOfStories)
           .map(formLinkedStoryObject)
         )
-      .catch(reason => console.error(reason))
     )
 
 app.get('/', (req, res) => {
@@ -75,6 +72,10 @@ app.get('/', (req, res) => {
     .then(stories => {
       log(stories)
       res.render('index', { stories })
+    })
+    .catch(reason => {
+      log(reason)
+      res.render('error', { reason })
     })
 })
 
