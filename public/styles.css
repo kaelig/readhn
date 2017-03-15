@@ -55,8 +55,11 @@ body {
 }
 .story__action:hover,
 .story__action:focus {
-  color: var(--color-link-hover);
   background: rgba(0, 0, 0, 0.05);
+}
+.story__action:hover + .story__title,
+.story__action:focus + .story__title {
+  color: var(--color-link-hover);
 }
 
 .story__title {
