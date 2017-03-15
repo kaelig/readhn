@@ -1,5 +1,7 @@
 # readhn
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kaelig/readhn.svg)](https://greenkeeper.io/)
+
 A simple, fast hackernews top stories reader.
 
 ## Keyboard interactions
