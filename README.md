@@ -1,4 +1,4 @@
-# readhn [![CircleCI](https://circleci.com/gh/kaelig/readhn.svg?style=shield)](https://circleci.com/gh/kaelig/readhn)
+# readhn [![CircleCI](https://circleci.com/gh/kaelig/readhn.svg?style=shield)](https://circleci.com/gh/kaelig/readhn) [![Greenkeeper badge](https://badges.greenkeeper.io/kaelig/readhn.svg)](https://greenkeeper.io/)
 
 A simple, fast hackernews top stories reader.
 
