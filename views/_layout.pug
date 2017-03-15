@@ -7,6 +7,7 @@ html
     link(rel="stylesheet", href="styles.css")
     link(rel="icon", href="/apple-touch-icon.png")
     meta(name="apple-mobile-web-app-title", content="Hacker News")
+    script(src="app.js", defer)
   body
     h1#top-stories.page-title Hacker News Top Stories
     nav.main-navigation(role="navigation")
@@ -21,4 +22,3 @@ html
     footer.page-footer.u-color-light
       block footer
         a(href="https://github.com/kaelig/readhn") Contribute on GitHub
-    script(src="app.js")
