@@ -42,6 +42,7 @@ body {
   margin: var(--spacing-small) 0;
   padding: var(--spacing-medium) calc(var(--spacing-medium) * 1.5);
   margin-left: calc(var(--spacing-medium) * -1.5);
+  margin-right: calc(var(--spacing-medium) * -1.5);
 }
 
 .story__action {
@@ -71,6 +72,13 @@ body {
   color: var(--color-light);
 }
 
+.page-footer {
+  margin-top: var(--spacing-large);
+  padding: var(--spacing-large) calc(var(--spacing-medium) * 1.5);
+  margin-left: calc(var(--spacing-medium) * -1.5);
+  margin-right: calc(var(--spacing-medium) * -1.5);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
 
 /**
  * Utility classes
@@ -116,7 +124,7 @@ body {
   clip: rect(0 0 0 0) !important;
 }
 
-.u-link-light {
+.u-color-light {
   color: var(--color-light);
 }
 

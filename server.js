@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 3000
 const NUMBER_OF_STORIES = 25
 
 // Set up caches
-const STATIC_MAX_AGE = 3600 * 24 * 365
-const CACHE_TIME = 300; // seconds
+const STATIC_MAX_AGE = process.env.NODE_ENV === 'production' ? 3600 * 24 * 365 : 0;
+const MEMCACHE_AGE = 300; // seconds
 let mjs
 try {
   // If memcached is available, let's load it
@@ -37,7 +37,7 @@ const app = express()
 // Request logging
 app.use(morgan('dev'));
 
-
+app.locals.MEMCACHE_AGE = MEMCACHE_AGE
 
 app.set('view engine', 'pug')
 app.use(express.static('public', { maxAge: STATIC_MAX_AGE }))
@@ -101,7 +101,7 @@ app.get('/', (req, res) =>
             log(err)
             res.render('error', { reason: err.message })
           }
-        }, CACHE_TIME)
+        }, MEMCACHE_AGE)
         res.render('index', { stories })
       })
       .catch(reason => {
