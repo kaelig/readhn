@@ -11,7 +11,16 @@ const memjs = require("memjs").Client
 // Set up caches
 const STATIC_MAX_AGE = 3600 * 24 * 365
 const CACHE_TIME = 300; // seconds
-const mjs = memjs.create();
+let mjs
+try {
+  // If memcached is available, let's load it
+  mjs = memjs.create()
+} catch(e) {
+  // Otherwise, let's return a stub
+  mjs = ({
+    get: () => (null, false)
+  })
+}
 
 const capitalizeFirstLetter = word =>
   word.charAt(0).toUpperCase() + word.slice(1)
@@ -78,7 +87,7 @@ const getTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
     )
 
 app.get('/', (req, res) =>
-  mjs.get('stories3', (err, cached) => {
+  mjs.get('stories', (err, cached) => {
     if (cached) {
       log(`Loading cached stories: ${cached.toString()}`)
       res.render('index', { stories: JSON.parse(cached) })
@@ -86,7 +95,7 @@ app.get('/', (req, res) =>
       getTopStoriesWithLinks()
       .then(stories => {
         log(`Caching stories: ${stories}`)
-        mjs.set('stories3', JSON.stringify(stories), (err) => {
+        mjs.set('stories', JSON.stringify(stories), (err) => {
           if (err) {
             log(err)
             res.render('error', { reason: err.message })
