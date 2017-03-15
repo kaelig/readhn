@@ -11,4 +11,5 @@ block content
         div.story__meta
           a(href= story.url).u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover= story.hostname
           =` – ${story.by} – ${story.relativeTime}`
-  footer.page-footer.u-color-light Refreshed every #{MEMCACHE_AGE / 60} minutes
+append footer
+  = ` — Refreshed every ${MEMCACHE_AGE / 60} minutes`
