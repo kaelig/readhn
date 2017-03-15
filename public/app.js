@@ -32,17 +32,20 @@ const focusStory = $story => {
 }
 
 const handleKeyboardInteractions = event => {
-  switch (event.keyCode) {
-    case KEYS.UP:
-      event.preventDefault()
-      getPreviousStory().querySelector('.story__action').focus()
-      break;
-    case KEYS.DOWN:
-      event.preventDefault()
-      getNextStory().querySelector('.story__action').focus();
-      break;
-    default:
-      break;
+  // Don't do anything if cmd + arrowkey is pressed
+  if (!event.metaKey && !event.ctrlKey) {
+    switch (event.keyCode) {
+      case KEYS.UP:
+        event.preventDefault()
+        getPreviousStory().querySelector('.story__action').focus()
+        break;
+      case KEYS.DOWN:
+        event.preventDefault()
+        getNextStory().querySelector('.story__action').focus();
+        break;
+      default:
+        break;
+    }
   }
 }
 
