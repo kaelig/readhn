@@ -4,10 +4,10 @@ block content
   section.js-top-stories.top-stories(aria-labelledby="top-stories")
     each story in stories
       article.story.u-faux-block-link(id= `story-${story.id}`, data-story-id= story.id)
+        a.story__action.u-faux-block-link__overlay(href= story.instapaperUrl)
+          span.u-assistive-text= story.title
         h2.story__title
           a(href= story.instapaperUrl, tabindex="0").story__title.u-link-no-underline= story.title
         div.story__meta
           a(href= story.url).u-faux-block-link__promote.u-link-light.u-link-no-underline.u-link-underline-hover= story.hostname
           =` – ${story.by} – ${story.relativeTime}`
-        a.story__action.u-faux-block-link__overlay(href= story.instapaperUrl)
-          span.u-assistive-text= story.title
