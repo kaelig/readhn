@@ -62,8 +62,6 @@ const handleOnBlur = event => {
   }
 }
 
-focusStory($firstStory)
-
 // Handle tabbing through links
 window.addEventListener('focus', handleOnFocus, true)
 window.addEventListener('blur', handleOnBlur, true)
