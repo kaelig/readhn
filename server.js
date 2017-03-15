@@ -43,7 +43,7 @@ const formLinkedStoryObject = ({
   ({
     id,
     title: startCase(title),
-    relativeDate: moment.unix(time).fromNow(),
+    relativeTime: moment.unix(time).fromNow(),
     time,
     url,
     score,
