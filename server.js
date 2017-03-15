@@ -39,15 +39,15 @@ app.use(morgan('dev'));
 
 app.locals.MEMCACHE_AGE = MEMCACHE_AGE
 
-// Set up a route to redirect http to https
+// Automatically redirect to https
 app.enable('trust proxy')
 app.use((req, res, next) => {
   if (req.secure || process.env.NODE_ENV !== 'production') {
-    // request was via https, so do no special handling
+    // request was via https or handled locally, so do no special handling
     next()
   } else {
     // request was via http, so redirect to https
-    res.redirect('https://' + req.headers.host + req.url)
+    res.redirect(`https://${req.headers.host + req.url}`)
   }
 })
 
