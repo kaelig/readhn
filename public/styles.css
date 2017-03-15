@@ -12,6 +12,16 @@
   --spacing-x-large: 1.5rem;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+* {
+  color: inherit;
+}
+
 html {
   background-color: var(--color-background);
   font-family: Georgia;
