@@ -6,6 +6,8 @@ const URL = require('url-parse')
 const moment = require('moment')
 const log = require('debug')('readhn')
 
+const staticMaxAge = 3600 * 24 * 365
+
 const capitalizeFirstLetter = word =>
   word.charAt(0).toUpperCase() + word.slice(1)
 // Naïve titlecase, improves scanability
@@ -19,7 +21,7 @@ const port = process.env.PORT || 3000
 const NUMBER_OF_STORIES = 25
 
 app.set('view engine', 'pug')
-app.use(express.static('public'))
+app.use(express.static('public'/*, { maxAge: staticMaxAge }*/))
 
 const getStory = (id) =>
   fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)

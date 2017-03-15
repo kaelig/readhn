@@ -1,7 +1,10 @@
 'use strict'
 
-const UP = 38
-const DOWN = 40
+const KEYS = {
+  UP: 38,
+  DOWN: 40,
+  C: 67
+}
 
 const $firstStory = document.querySelectorAll('.story')[0]
 const $lastStory = [...document.querySelectorAll('.story')].pop()
@@ -30,11 +33,11 @@ const focusStory = $story => {
 
 const handleKeyboardInteractions = event => {
   switch (event.keyCode) {
-    case UP:
+    case KEYS.UP:
       event.preventDefault()
       getPreviousStory().querySelector('.story__action').focus()
       break;
-    case DOWN:
+    case KEYS.DOWN:
       event.preventDefault()
       getNextStory().querySelector('.story__action').focus();
       break;
@@ -42,6 +45,17 @@ const handleKeyboardInteractions = event => {
       break;
   }
 }
+
+const handleStoriesKeyboardInteractions = event => {
+  if (!event.metaKey && event.keyCode === KEYS.C) {
+    event.preventDefault()
+    console.log(getFocusedStory())
+    return goToComments(getFocusedStory().dataset.storyId)
+  }
+}
+
+const goToComments = storyId =>
+  window.open(`https://news.ycombinator.com/item?id=${storyId}`)
 
 const unSelectStory = () => {
   const $selectedStory = document.querySelector('.story__action[aria-selected]')
@@ -68,3 +82,4 @@ window.addEventListener('blur', handleOnBlur, true)
 
 // Handle up-down keys
 window.addEventListener('keydown', handleKeyboardInteractions, false)
+document.querySelector('.js-top-stories').addEventListener('keydown', handleStoriesKeyboardInteractions, false)

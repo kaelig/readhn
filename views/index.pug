@@ -1,24 +1,13 @@
-doctype html
-html
-  head
-    meta(charset="utf-8")
-    title Read Hacker News
-    link(rel="stylesheet", href="styles.css")
-    meta(name="viewport", content="initial-scale=1")
-  body
-    h1#top-stories.page-title Hacker News Top Stories
-    nav.main-navigation(role="navigation")
-      ul.u-list-inline.u-list-reset
-        li
-          a(href="https://hn.algolia.com", accesskey="s") Search
-        li
-          a(href="/") Refresh
-        li
-          a(href="https://news.ycombinator.com/") Hacker News
-    section.top-stories(aria-labelledby="top-stories")
-      each story in stories
-        article.story(id= `story-${story.id}`)
-          a.story__action(href= story.instapaperUrl)
-            h2.story__title= story.title
-            div.story__meta= `${story.hostname} – ${story.by} – ${story.relativeTime}`
-    script(src="app.js")
+extends _layout
+
+block content
+  section.js-top-stories.top-stories(aria-labelledby="top-stories")
+    each story in stories
+      article.story.u-faux-block-link(id= `story-${story.id}`, data-story-id= story.id)
+        h2.story__title
+          a(href= story.instapaperUrl, tabindex="0").story__title.u-link-no-underline= story.title
+        div.story__meta
+          a(href= story.url).u-faux-block-link__promote.u-link-light.u-link-no-underline.u-link-underline-hover= story.hostname
+          =` – ${story.by} – ${story.relativeTime}`
+        a.story__action.u-faux-block-link__overlay(href= story.instapaperUrl)
+          span.u-assistive-text= story.title
