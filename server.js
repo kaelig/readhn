@@ -8,6 +8,9 @@ const log = require('debug')('readhn')
 const morgan = require('morgan')
 const memjs = require("memjs").Client
 
+const PORT = process.env.PORT || 3000
+const NUMBER_OF_STORIES = 25
+
 // Set up caches
 const STATIC_MAX_AGE = 3600 * 24 * 365
 const CACHE_TIME = 300; // seconds
@@ -35,8 +38,6 @@ const app = express()
 app.use(morgan('dev'));
 
 
-const port = process.env.PORT || 3000
-const NUMBER_OF_STORIES = 25
 
 app.set('view engine', 'pug')
 app.use(express.static('public', { maxAge: STATIC_MAX_AGE }))
@@ -111,6 +112,6 @@ app.get('/', (req, res) =>
   })
 )
 
-app.listen(port, () => {
-  console.log('App running on http://localhost:3000')
+app.listen(PORT, () => {
+  console.log(`App running on http://localhost:${PORT}`)
 })
