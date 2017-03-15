@@ -9,7 +9,8 @@ const morgan = require('morgan')
 const memjs = require("memjs").Client
 
 // Set up caches
-const staticMaxAge = 3600 * 24 * 365
+const STATIC_MAX_AGE = 3600 * 24 * 365
+const CACHE_TIME = 300; // seconds
 const mjs = memjs.create();
 
 const capitalizeFirstLetter = word =>
@@ -29,7 +30,7 @@ const port = process.env.PORT || 3000
 const NUMBER_OF_STORIES = 25
 
 app.set('view engine', 'pug')
-app.use(express.static('public'/*, { maxAge: staticMaxAge }*/))
+app.use(express.static('public', { maxAge: STATIC_MAX_AGE }))
 
 const getStory = (id) =>
   fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
@@ -90,7 +91,7 @@ app.get('/', (req, res) =>
             log(err)
             res.render('error', { reason: err.message })
           }
-        }, 300)
+        }, CACHE_TIME)
         res.render('index', { stories })
       })
       .catch(reason => {
