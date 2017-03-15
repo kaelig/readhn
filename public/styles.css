@@ -1,8 +1,9 @@
 :root {
+  --color-highlight: #0074bf;
   --color-background: #F8F2E3;
   --color-body: #242424;
   --color-link: #242424;
-  --color-link-hover: #0074bf;
+  --color-link-hover: var(--color-highlight);
   --color-light: #81807c;
 
   --spacing-small: .333333rem;
