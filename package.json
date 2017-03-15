@@ -2,9 +2,10 @@
   "name": "readhn",
   "version": "1.0.0",
   "description": "A Hacker News reader",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "nodemon -e js,pug,css,json -w . -w public"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
     "node-fetch": "^1.6.3",
     "pug": "^2.0.0-beta11",
     "url-parse": "^1.1.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
