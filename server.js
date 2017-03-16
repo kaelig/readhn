@@ -2,6 +2,7 @@
 
 const fetch = require('node-fetch')
 const express = require('express')
+const compression = require('compression')
 const URL = require('url-parse')
 const moment = require('moment')
 const log = require('debug')('readhn')
@@ -33,6 +34,8 @@ const startCase = sentence =>
 
 const pug = require('pug')
 const app = express()
+
+app.use(compression())
 
 // Request logging
 app.use(morgan('dev'));
