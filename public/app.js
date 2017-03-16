@@ -40,7 +40,8 @@ const focusStory = $story => {
 }
 
 const handleKeyboardInteractions = event => {
-  // Don't do anything if cmd + arrowkey is pressed
+  // Don't do anything if command + arrow key or control + arrow key are pressed
+  // In case the user wants to use a shortcut (e.g. to the top or bottom of the page)
   if (!event.metaKey && !event.ctrlKey) {
     switch (event.keyCode) {
       case KEYS.UP:
@@ -58,7 +59,11 @@ const handleKeyboardInteractions = event => {
 }
 
 const handleStoriesKeyboardInteractions = event => {
-  if (!event.metaKey && !event.ctrlKey && event.keyCode === KEYS.C && getSelectedStory()) {
+  if (
+    // Don't do anything if command + arrow key or control + arrow key are pressed
+    // In case the user wants to CMD/CTRL+C
+    !event.metaKey && !event.ctrlKey
+    && event.keyCode === KEYS.C && getSelectedStory()) {
     event.preventDefault()
     return goToComments(getSelectedStory().dataset.storyId)
   }

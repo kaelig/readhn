@@ -7,9 +7,13 @@ block content
         a.js-story__action.story__action.u-faux-block-link__overlay(href= story.instapaperUrl, tabindex="-1")
           span.u-assistive-text= story.title
         h2.story__title
-          a(href= story.instapaperUrl, tabindex="0").story__title.u-link-no-underline= story.title
+          a(href= story.instapaperUrl, tabindex="0").story__title.u-link-no-underline
+            = story.title
         div.story__meta
-          a(href= story.url).u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover= story.hostname
+          a(href= story.url).u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover
+            span.u-assistive-text Read original story on
+            = story.hostname
+
           =` – ${story.by} – ${story.relativeTime}`
 append footer
   = ` — Refreshed every ${MEMCACHE_AGE / 60} minutes`
@@ -18,5 +22,5 @@ append footer
     dl.keyboard-shortcuts
       dt.keyboard-shortcuts__shortcut #[kbd.kbd C]
       dd.keyboard-shortcuts__description Go to comments
-      dt.keyboard-shortcuts__shortcut #[kbd.kbd ↓↑]
+      dt.keyboard-shortcuts__shortcut #[kbd.kbd ↓] #[kbd.kbd ↑]
       dd.keyboard-shortcuts__description Next / Previous story
