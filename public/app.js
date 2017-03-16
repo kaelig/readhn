@@ -58,7 +58,7 @@ const handleKeyboardInteractions = event => {
 }
 
 const handleStoriesKeyboardInteractions = event => {
-  if (!event.metaKey && !event.ctrlKey && event.keyCode === KEYS.C) {
+  if (!event.metaKey && !event.ctrlKey && event.keyCode === KEYS.C && getSelectedStory()) {
     event.preventDefault()
     return goToComments(getSelectedStory().dataset.storyId)
   }
