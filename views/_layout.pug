@@ -1,5 +1,5 @@
 doctype html
-html
+html(lang="en")
   head
     meta(charset="utf-8")
     title Hacker News Top Stories
@@ -10,7 +10,7 @@ html
     script(src="app.js", defer)
   body
     h1#top-stories.page-title Hacker News Top Stories
-    nav.main-navigation(role="navigation")
+    nav.main-navigation
       ul.u-list-inline.u-list-reset
         li
           a(href="https://hn.algolia.com", accesskey="s").u-color-light Search
@@ -18,7 +18,8 @@ html
           a(href="/").u-color-light Refresh
         li
           a(href="https://news.ycombinator.com/").u-color-light Hacker News
-    block content
+    main
+      block content
     footer.page-footer.u-color-light
       block footer
         a(href="https://github.com/kaelig/readhn") Contribute on GitHub
