@@ -13,3 +13,10 @@ block content
           =` – ${story.by} – ${story.relativeTime}`
 append footer
   = ` — Refreshed every ${MEMCACHE_AGE / 60} minutes`
+  .u-hide-on-small-screens
+    h1.heading-primary Keyboard navigation
+    dl.keyboard-shortcuts
+      dt.keyboard-shortcuts__shortcut #[kbd.kbd C]
+      dd.keyboard-shortcuts__description Go to comments
+      dt.keyboard-shortcuts__shortcut #[kbd.kbd ↓↑]
+      dd.keyboard-shortcuts__description Next / Previous story

@@ -83,6 +83,38 @@ body {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.heading-primary {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.keyboard-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+}
+.keyboard-shortcuts__shortcut {
+  flex-shrink: 0;
+}
+.keyboard-shortcuts__description {
+  flex: 1 1 0;
+  margin-left: .5rem;
+}
+
+.kbd {
+  display: inline-flex;
+  padding: 3px 5px;
+  font: 0.6875rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 0.625rem;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+
+
 /**
  * Utility classes
  */
@@ -138,4 +170,14 @@ body {
 .u-link-underline-hover:hover,
 .u-link-underline-hover:focus {
   text-decoration: underline;
+}
+
+.u-hide-on-small-screens {
+  display: none !important;
+}
+
+@media (min-width: 30rem) {
+  .u-hide-on-small-screens {
+    display: initial !important;
+  }
 }
