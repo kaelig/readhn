@@ -3,7 +3,8 @@
 const KEYS = {
   UP: 38,
   DOWN: 40,
-  C: 67
+  C: 67,
+  RETURN: 13
 }
 
 const $firstStory = document.querySelectorAll('.js-story')[0]
@@ -43,17 +44,24 @@ const handleKeyboardInteractions = event => {
   // Don't do anything if command + arrow key or control + arrow key are pressed
   // In case the user wants to use a shortcut (e.g. to the top or bottom of the page)
   if (!event.metaKey && !event.ctrlKey) {
-    switch (event.keyCode) {
-      case KEYS.UP:
+    if (event.altKey) {
+      if (event.keyCode === KEYS.RETURN) {
         event.preventDefault()
-        focusStory(getPreviousStory())
-        break;
-      case KEYS.DOWN:
-        event.preventDefault()
-        focusStory(getNextStory())
-        break;
-      default:
-        break;
+        goToOriginalStory(getSelectedStory())
+      }
+    } else {
+      switch (event.keyCode) {
+        case KEYS.UP:
+          event.preventDefault()
+          focusStory(getPreviousStory())
+          break;
+        case KEYS.DOWN:
+          event.preventDefault()
+          focusStory(getNextStory())
+          break;
+        default:
+          break;
+      }
     }
   }
 }
@@ -70,7 +78,10 @@ const handleStoriesKeyboardInteractions = event => {
 }
 
 const goToComments = storyId =>
-  window.open(`https://news.ycombinator.com/item?id=${storyId}`)
+  window.location.assign(`https://news.ycombinator.com/item?id=${storyId}`)
+
+const goToOriginalStory = $story =>
+  window.location.assign($story.querySelector('.js-original-url').href)
 
 const unSelectStories = () => {
   const $selectedStory = document.querySelector('.js-story__action[aria-selected]')

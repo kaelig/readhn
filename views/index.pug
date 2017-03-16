@@ -10,17 +10,21 @@ block content
           a(href= story.instapaperUrl, tabindex="0").story__title.u-link-no-underline
             = story.title
         div.story__meta
-          a(href= story.url).u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover
+          a(href= story.url).js-original-url.u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover
             span.u-assistive-text Read original story on
             = story.hostname
-
           =` – ${story.by} – ${story.relativeTime}`
 append footer
   = ` — Refreshed every ${MEMCACHE_AGE / 60} minutes`
   .u-hide-on-small-screens
     h1.heading-primary Keyboard navigation
     dl.keyboard-shortcuts
-      dt.keyboard-shortcuts__shortcut #[kbd.kbd C]
-      dd.keyboard-shortcuts__description Go to comments
       dt.keyboard-shortcuts__shortcut #[kbd.kbd ↓] #[kbd.kbd ↑]
       dd.keyboard-shortcuts__description Next / Previous story
+      dt.keyboard-shortcuts__shortcut #[kbd.kbd ⏎]
+      dd.keyboard-shortcuts__description Read story on Instapaper
+      dt.keyboard-shortcuts__shortcut #[kbd.kbd alt] #[span +] #[kbd.kbd ⏎]
+      dd.keyboard-shortcuts__description Read story on original site
+
+      dt.keyboard-shortcuts__shortcut #[kbd.kbd C]
+      dd.keyboard-shortcuts__description Go to comments

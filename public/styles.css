@@ -102,18 +102,38 @@ body {
   font-weight: normal;
 }
 
-.keyboard-shortcuts {
-  display: flex;
+.keyboard-shortcuts:after {
+    content:"";
+    display:table;
+    clear:both;
+}
+.keyboard-shortcuts__shortcut {
+  display: block;
+  float: left;
+  width: 13%;
+  margin: 0;
+  text-align: right;
+  word-spacing: -5px;
+}
+.keyboard-shortcuts__shortcut:nth-of-type(3) {
+  clear: both;
 }
 .keyboard-shortcuts__description {
-  flex: 1 1 0;
-  margin-left: var(--spacing-medium);
+  float: left;
+  width: 37%;
+  margin-left: 0;
+  padding-left: var(--spacing-medium);
+}
+
+.keyboard-shortcuts__shortcut,
+.keyboard-shortcuts__description {
+  margin-bottom: var(--spacing-large);
 }
 
 .kbd {
   display: inline-flex;
   padding: 4px 5px;
-  font: small Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font: small Monaco, Courier, monospace;
   line-height: 0.7;
   color: #444d56;
   vertical-align: top;
@@ -121,6 +141,9 @@ body {
   border: solid 1px #c6cbd1;
   border-bottom-color: #959da5;
   border-radius: 3px;
+}
+.kbd + .kbd {
+  margin-left: 4px;
 }
 
 
