@@ -6,29 +6,37 @@ const KEYS = {
   C: 67
 }
 
-const $firstStory = document.querySelectorAll('.story')[0]
-const $lastStory = [...document.querySelectorAll('.story')].pop()
+const $firstStory = document.querySelectorAll('.js-story')[0]
+const $lastStory = [...document.querySelectorAll('.js-story')].pop()
 
-const getFocusedStory = () => {
-  const $action = document.querySelector('.story__action[aria-selected]')
-  return $action ? $action.closest('.story') : $lastStory
+const getSelectedStory = () => {
+  const $action = document.querySelector('.js-story__action[aria-selected]')
+  return $action ? $action.closest('.js-story') : false
 }
 
 const getPreviousStory = () =>
-  (getFocusedStory() === $firstStory) ?
-    $lastStory :
-    getFocusedStory().previousSibling
+  getSelectedStory() ?
+    (getSelectedStory() === $firstStory
+      ? $lastStory : getSelectedStory().previousSibling)
+    : $lastStory
 
 const getNextStory = () =>
-  (getFocusedStory() === $lastStory) ?
-    $firstStory :
-    getFocusedStory().nextSibling // next .story
+  getSelectedStory() ?
+    (getSelectedStory() === $lastStory
+      ? $firstStory : getSelectedStory().nextSibling)
+    : $firstStory
+
+const selectStory = $story =>
+  $story
+    .querySelector('.js-story__action')
+    .setAttribute('aria-selected', true)
 
 const focusStory = $story => {
-  unSelectStory()
-  const $action = $story.querySelector('.story__action')
-  $action.focus()
-  $action.setAttribute('aria-selected', true)
+  Promise.resolve(unSelectStories())
+    .then(() => {
+      selectStory($story)
+      $story.querySelector('.js-story__action').focus()
+    })
 }
 
 const handleKeyboardInteractions = event => {
@@ -37,11 +45,11 @@ const handleKeyboardInteractions = event => {
     switch (event.keyCode) {
       case KEYS.UP:
         event.preventDefault()
-        getPreviousStory().querySelector('.story__action').focus()
+        focusStory(getPreviousStory())
         break;
       case KEYS.DOWN:
         event.preventDefault()
-        getNextStory().querySelector('.story__action').focus();
+        focusStory(getNextStory())
         break;
       default:
         break;
@@ -50,39 +58,42 @@ const handleKeyboardInteractions = event => {
 }
 
 const handleStoriesKeyboardInteractions = event => {
-  if (!event.metaKey && event.keyCode === KEYS.C) {
+  if (!event.metaKey && !event.ctrlKey && event.keyCode === KEYS.C) {
     event.preventDefault()
-    console.log(getFocusedStory())
-    return goToComments(getFocusedStory().dataset.storyId)
+    return goToComments(getSelectedStory().dataset.js-storyId)
   }
 }
 
 const goToComments = storyId =>
   window.open(`https://news.ycombinator.com/item?id=${storyId}`)
 
-const unSelectStory = () => {
-  const $selectedStory = document.querySelector('.story__action[aria-selected]')
+const unSelectStories = () => {
+  const $selectedStory = document.querySelector('.js-story__action[aria-selected]')
   if ($selectedStory) {
     $selectedStory.removeAttribute('aria-selected')
   }
 }
 
-const handleOnFocus = event => {
-  if (event.target.classList && event.target.classList.contains('story__action')) {
-    focusStory(event.target.closest('.story'))
-  }
-}
+const eventIsTargettingAction = event =>
+  event.target.classList && event.target.classList.contains('story__action')
 
-const handleOnBlur = event => {
-  if (event.target.classList && event.target.classList.contains('story__action')) {
-    unSelectStory()
+const eventIsTargettingOtherStoryLinks = event =>
+  !!event.target.closest('.js-story')
+
+const handleOnFocus = event => {
+  if (eventIsTargettingAction(event)) {
+    focusStory(event.target.closest('.js-story'))
+  } else if (eventIsTargettingOtherStoryLinks(event)) {
+    unSelectStories()
+    selectStory(event.target.closest('.js-story'))
+  } else {
+    unSelectStories()
   }
 }
 
 // Handle tabbing through links
-window.addEventListener('focus', handleOnFocus, true)
-window.addEventListener('blur', handleOnBlur, true)
+document.addEventListener('focus', handleOnFocus, true)
 
 // Handle up-down keys
-window.addEventListener('keydown', handleKeyboardInteractions, false)
+document.addEventListener('keydown', handleKeyboardInteractions, false)
 document.querySelector('.js-top-stories').addEventListener('keydown', handleStoriesKeyboardInteractions, false)
