@@ -1,8 +1,9 @@
-# readhn [![CircleCI](https://circleci.com/gh/kaelig/readhn.svg?style=shield)](https://circleci.com/gh/kaelig/readhn) [![Greenkeeper badge](https://badges.greenkeeper.io/kaelig/readhn.svg)](https://greenkeeper.io/)
+# www.read.hn [![CircleCI](https://circleci.com/gh/kaelig/readhn.svg?style=shield)](https://circleci.com/gh/kaelig/readhn) [![Greenkeeper badge](https://badges.greenkeeper.io/kaelig/readhn.svg)](https://greenkeeper.io/)
 
 A simple, fast, and accessible Hacker News top stories reader.
 
-- Shows the top 25 linked stories
+- Shows the top 25 links from Hacker News
+- Opens stories in [Instapaper](https://www.instapaper.com/) (free and great for reading stories on both mobile and desktop)
 - Supports keyboard navigation
 - Shows clearly which stories you've already read
 - Accessible to screen readers and people with low-vision
