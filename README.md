@@ -1,4 +1,4 @@
-# www.read.hn [![CircleCI](https://circleci.com/gh/kaelig/readhn.svg?style=shield)](https://circleci.com/gh/kaelig/readhn) [![Greenkeeper badge](https://badges.greenkeeper.io/kaelig/readhn.svg)](https://greenkeeper.io/)
+# [www.read.hn](https://www.read.hn) [![CircleCI](https://circleci.com/gh/kaelig/readhn.svg?style=shield)](https://circleci.com/gh/kaelig/readhn) [![Greenkeeper badge](https://badges.greenkeeper.io/kaelig/readhn.svg)](https://greenkeeper.io/)
 
 A simple, fast, and accessible Hacker News top stories reader.
 
@@ -8,6 +8,30 @@ A simple, fast, and accessible Hacker News top stories reader.
 - Shows clearly which stories you've already read
 - Accessible to screen readers and people with low-vision
 - Gets refreshed every ~5 minutes
+- Runs over HTTPS
+
+[![Screenshot of read.hn](https://cloud.githubusercontent.com/assets/85783/24484342/9b04d224-14b2-11e7-85dd-929029e2d810.png)](https://www.read.hn)
+
+
+----
+
+## Why do stories open in Instapaper?
+
+Stories open in Instapaper and look something like this:
+
+[![NYT Story in Instapaper](https://cloud.githubusercontent.com/assets/85783/24484432/19328be6-14b3-11e7-9a24-5e05ac02bbfe.png)](https://www.instapaper.com/text?u=https%3A%2F%2Fwww.nytimes.com%2F2017%2F03%2F29%2Fbusiness%2Fwestinghouse-toshiba-nuclear-bankruptcy.html)
+
+### Why use Instapaper?
+
+1. It’s free – [Create an account](https://www.instapaper.com).
+1. It comes with a great reading experience: large text (useful when reading while walking), good typography settings, night mode…
+1. It provides a cross-device “Read Later” functionality (very useful when an article is interesting but will require your full attention later).
+1. A lot of stories posted on Hacker News aren’t optimized for mobile, are slow, and come with a lot of ads. Instpaper strips that out and only keeps the content. It’s faster, works on mobile, and is less tiring since all articles look the same.
+1. Browsing read.hn & Instapaper feels like a unified experience when your Instapaper settings look like this:
+
+![Instapaper Settings](https://cloud.githubusercontent.com/assets/85783/24484000/b6bfba62-14b0-11e7-8865-afcf40aa44c5.png)
+
+Note: you can still access the original stories by clicking the domain name below each story title.
 
 ----
 
