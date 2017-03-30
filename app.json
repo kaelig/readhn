@@ -4,7 +4,7 @@
   "keywords": [
     "hacker news"
   ],
-  "website": "https://readhn.herokuapp.com",
+  "website": "https://www.read.hn",
   "repository": "https://github.com/kaelig/readhn.git",
   "logo": "https://readhn.herokuapp.com/apple-touch-icon.png",
   "buildpacks": [
