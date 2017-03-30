@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 0",
     "dev": "DEBUG=readhn nodemon -e js,pug,json -w . -w public"
   },
+  "engines": {
+    "node": "7",
+    "npm": "4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kaelig/readhn.git"
