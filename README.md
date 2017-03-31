@@ -10,7 +10,7 @@ A simple, fast, and accessible Hacker News top stories reader.
 - Gets refreshed every ~5 minutes
 - Runs over HTTPS
 
-[![Screenshot of read.hn](https://cloud.githubusercontent.com/assets/85783/24484342/9b04d224-14b2-11e7-85dd-929029e2d810.png)](https://www.read.hn)
+[![Screenshot of read.hn](https://cloud.githubusercontent.com/assets/85783/24538324/47eb078e-159d-11e7-970a-906cd742a939.png)](https://www.read.hn)
 
 
 ----
@@ -19,7 +19,7 @@ A simple, fast, and accessible Hacker News top stories reader.
 
 Stories open in Instapaper and look something like this:
 
-[![NYT Story in Instapaper](https://cloud.githubusercontent.com/assets/85783/24484432/19328be6-14b3-11e7-9a24-5e05ac02bbfe.png)](https://www.instapaper.com/text?u=https%3A%2F%2Fwww.nytimes.com%2F2017%2F03%2F29%2Fbusiness%2Fwestinghouse-toshiba-nuclear-bankruptcy.html)
+[![A Great Story in Instapaper](https://cloud.githubusercontent.com/assets/85783/24538317/3d9b3b82-159d-11e7-914b-31e370a0af6b.png)](https://www.instapaper.com/text?u=https%3A%2F%2Fwww.nytimes.com%2F2017%2F03%2F29%2Fbusiness%2Fwestinghouse-toshiba-nuclear-bankruptcy.html)
 
 ### Why use Instapaper?
 
