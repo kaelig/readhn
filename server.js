@@ -66,9 +66,11 @@ const getStories = (numberOfStories = 50) =>
     .then(data => data.json())
     .then(topStories => topStories.slice(0, numberOfStories))
 
-const isLinkedStory = story => !!story.url
+// On Hacker News, some stories are comments
+// and other stories are external "actual" stories
+const isActualStory = story => !!story.url
 
-const buildLinkedStoriesObject = ({
+const buildStoriesObject = ({
   id,
   title,
   time,
@@ -96,9 +98,9 @@ const getTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
       ))
       .then(bodies =>
         bodies
-          .filter(isLinkedStory)
+          .filter(isActualStory)
           .slice(0, numberOfStories)
-          .map(buildLinkedStoriesObject)
+          .map(buildStoriesObject)
         )
     )
 
