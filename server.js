@@ -68,7 +68,7 @@ const getStories = (numberOfStories = 50) =>
 
 const isLinkedStory = story => !!story.url
 
-const formLinkedStoryObject = ({
+const buildLinkedStoriesObject = ({
   id,
   title,
   time,
@@ -98,7 +98,7 @@ const getTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
         bodies
           .filter(isLinkedStory)
           .slice(0, numberOfStories)
-          .map(formLinkedStoryObject)
+          .map(buildLinkedStoriesObject)
         )
     )
 
