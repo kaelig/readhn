@@ -66,7 +66,7 @@ const getStories = (numberOfStories = 50) =>
     .then(data => data.json())
     .then(topStories => topStories.slice(0, numberOfStories))
 
-// On Hacker News, some stories are comments
+// On Hacker News, some stories are comment threads
 // and other stories are external "actual" stories
 const isActualStory = story => !!story.url
 
