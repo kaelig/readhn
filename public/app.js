@@ -3,6 +3,8 @@
 const KEYS = {
   UP: 38,
   DOWN: 40,
+  J: 74,
+  K: 75,
   C: 67,
   RETURN: 13
 }
@@ -52,10 +54,12 @@ const handleKeyboardInteractions = event => {
     } else {
       switch (event.keyCode) {
         case KEYS.UP:
+        case KEYS.K:
           event.preventDefault()
           focusStory(getPreviousStory())
           break;
         case KEYS.DOWN:
+        case KEYS.J:
           event.preventDefault()
           focusStory(getNextStory())
           break;
