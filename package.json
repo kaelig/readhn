@@ -23,14 +23,14 @@
   "homepage": "https://www.read.hn",
   "dependencies": {
     "compression": "^1.6.2",
-    "debug": "^2.6.3",
-    "express": "^4.15.2",
+    "debug": "^2.6.8",
+    "express": "^4.15.3",
     "memjs": "^1.0.0-rc.1",
     "moment": "^2.18.1",
-    "morgan": "^1.8.1",
-    "node-fetch": "^1.6.3",
-    "pug": "^2.0.0-beta11",
-    "url-parse": "^1.1.8"
+    "morgan": "^1.8.2",
+    "node-fetch": "^1.7.1",
+    "pug": "^2.0.0-rc.2",
+    "url-parse": "^1.1.9"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
