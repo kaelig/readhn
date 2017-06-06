@@ -10,7 +10,7 @@ const morgan = require('morgan')
 const memjs = require("memjs").Client
 
 const PORT = process.env.PORT || 3000
-const NUMBER_OF_STORIES = 25
+const NUMBER_OF_STORIES = process.env.NUMBER_OF_STORIES || 25
 
 // Set up caches
 const STATIC_MAX_AGE = process.env.NODE_ENV === 'production' ? 3600 * 24 * 365 : 0;
