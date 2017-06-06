@@ -12,6 +12,7 @@ block content
         div.story__meta
           a(href=story.url).js-original-url.u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover
             span.u-assistive-text Read original story on
+              = " "
             = story.hostname
           =` – ${story.by} – `
           a(href=`https://news.ycombinator.com/item?id=${story.id}`).u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover
