@@ -12,10 +12,18 @@ const memjs = require("memjs").Client
 const PORT = process.env.PORT || 3000
 const NUMBER_OF_STORIES = process.env.NUMBER_OF_STORIES || 25
 
+// Set up memjs if Memcached Cloud is present
+if (process.env.MEMCACHEDCLOUD_SERVERS) {
+  process.env.MEMCACHIER_SERVERS = process.env.MEMCACHIER_SERVERS || process.env.MEMCACHEDCLOUD_SERVERS
+  process.env.MEMCACHIER_USERNAME = process.env.MEMCACHIER_USERNAME || process.env.MEMCACHEDCLOUD_USERNAME
+  process.env.MEMCACHIER_PASSWORD = process.env.MEMCACHIER_PASSWORD || process.env.MEMCACHEDCLOUD_PASSWORD
+}
+
 // Set up caches
 const STATIC_MAX_AGE = process.env.NODE_ENV === 'production' ? 3600 * 24 * 365 : 0;
 const MEMCACHE_AGE = 300; // seconds
 let mjs
+
 try {
   // If memcached is available, let's load it
   mjs = memjs.create()
