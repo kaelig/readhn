@@ -22,17 +22,19 @@ if (process.env.MEMCACHEDCLOUD_SERVERS) {
 // Set up caches
 const STATIC_MAX_AGE = process.env.NODE_ENV === 'production' ? 3600 * 24 * 365 : 0;
 const MEMCACHE_AGE = 300; // seconds
-let mjs
 
-try {
-  // If memcached is available, let's load it
-  mjs = memjs.create()
-} catch(e) {
-  // Otherwise, let's return a stub
-  mjs = ({
-    get: () => (null, false)
-  })
-}
+// Load MemCached
+let mjs = memjs.create()
+mjs.stats((error, server, stats) => {
+  if (error) {
+    // Connection was unsuccessful, let's return a stub
+    log('Could not connect to MemCache, falling back to a stub of mjs.')
+    mjs = ({
+      get: (key, callback) => callback(null, false),
+      set: (key, value, options, callback) => null
+    })
+  }
+})
 
 const capitalizeFirstLetter = word =>
   word.charAt(0).toUpperCase() + word.slice(1)
@@ -114,25 +116,31 @@ const getTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
 
 app.get('/', (req, res) =>
   mjs.get('stories', (err, cached) => {
+    log(`Getting stories`)
     if (cached) {
       log(`Loading cached stories: ${cached.toString()}`)
       res.render('index', { stories: JSON.parse(cached) })
     } else {
       getTopStoriesWithLinks()
-      .then(stories => {
-        log(`Caching stories: ${stories}`)
-        mjs.set('stories', JSON.stringify(stories), (err) => {
-          if (err) {
-            log(err)
-            res.render('error', { reason: err.message })
-          }
-        }, MEMCACHE_AGE)
-        res.render('index', { stories })
-      })
-      .catch(reason => {
-        log(reason)
-        res.render('error', { reason })
-      })
+        .then(stories => {
+          mjs.set(
+            'stories',
+            JSON.stringify(stories),
+            { expires: MEMCACHE_AGE },
+            (err, val) => {
+              if (err) {
+                log(err)
+              } else {
+                log(`Caching stories: ${stories}`)
+              }
+            }
+          )
+          res.render('index', { stories })
+        })
+        .catch(reason => {
+          log(reason)
+          res.render('error', { reason })
+        })
     }
   })
 )
