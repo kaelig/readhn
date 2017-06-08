@@ -117,7 +117,7 @@ const getTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
     )
 
 app.get('/', (req, res) =>
-  mjs.get('stories', (err, cached) => {
+  mjs.get('hnstories', (err, cached) => {
     log(`Getting stories`)
     if (cached) {
       log(`Loading cached stories: ${cached.toString()}`)
@@ -126,7 +126,7 @@ app.get('/', (req, res) =>
       getTopStoriesWithLinks()
         .then(stories => {
           mjs.set(
-            'stories',
+            'hnstories',
             JSON.stringify(stories),
             { expires: MEMCACHE_AGE },
             (err, val) => {
