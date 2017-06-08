@@ -8,7 +8,7 @@
     "dev": "DEBUG=readhn nodemon -e js,pug,json -w . -w public"
   },
   "engines": {
-    "node": "7",
+    "node": "8",
     "npm": "5"
   },
   "repository": {
@@ -29,8 +29,7 @@
     "moment": "^2.18.1",
     "morgan": "^1.8.2",
     "node-fetch": "^1.7.1",
-    "pug": "^2.0.0-rc.2",
-    "url-parse": "^1.1.9"
+    "pug": "^2.0.0-rc.2"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

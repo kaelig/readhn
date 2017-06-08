@@ -1,13 +1,13 @@
 'use strict'
 
-const fetch = require('node-fetch')
 const express = require('express')
 const compression = require('compression')
-const URL = require('url-parse')
-const moment = require('moment')
+const fetch = require('node-fetch')
 const log = require('debug')('readhn')
+const moment = require('moment')
 const morgan = require('morgan')
 const memjs = require("memjs").Client
+const URL = require('url').URL
 
 const PORT = process.env.PORT || 3000
 const NUMBER_OF_STORIES = process.env.NUMBER_OF_STORIES || 25
@@ -33,6 +33,8 @@ mjs.stats((error, server, stats) => {
       get: (key, callback) => callback(null, false),
       set: (key, value, options, callback) => null
     })
+  } else {
+    log('Connection to MemCache successful', stats)
   }
 })
 
@@ -96,7 +98,7 @@ const buildStoriesObject = ({
     url,
     score,
     by,
-    hostname: URL(url).hostname,
+    hostname: new URL(url).hostname,
     instapaperUrl: `https://www.instapaper.com/text?u=${encodeURIComponent(url)}`
   })
 
