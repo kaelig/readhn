@@ -38,6 +38,7 @@
 html {
   background-color: var(--color-background);
   font-family: Georgia;
+  overflow-y: scroll;
 }
 
 body {
