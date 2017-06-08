@@ -12,7 +12,7 @@
       "url": "heroku/nodejs"
     }
   ],
-  "addons": [ "memcachier" ],
+  "addons": [ "memcachedcloud" ],
   "env": {
     "NUMBER_OF_STORIES": {
       "description": "Number of stories to show (default: 25)",
