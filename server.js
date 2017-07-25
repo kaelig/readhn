@@ -105,9 +105,7 @@ const buildStoriesObject = ({
 const getTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
   getStories()
     .then(topStories =>
-      Promise.all(topStories.map(
-        storyId => getStory(storyId)
-      ))
+      Promise.all(topStories.map(getStory))
       .then(bodies =>
         bodies
           .filter(isActualStory)
