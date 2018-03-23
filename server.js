@@ -67,11 +67,12 @@ app.use(express.static("public", { maxAge: STATIC_MAX_AGE }));
 
 app.get("/", (req, res) =>
   mjs.get("hnstories", (err, cached) => {
-    log(`Getting stories`);
+    log(`Getting stories...`);
     if (cached) {
-      log(`Loading cached stories: ${cached.toString()}`);
+      log(`Loading cached stories: ${cached.toString()}...`);
       res.render("index", { stories: JSON.parse(cached) });
     } else {
+      log(`Fetching stories from the API...`);
       fetchTopStoriesWithLinks()
         .then(stories => {
           mjs.set(
