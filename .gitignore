@@ -9,8 +9,11 @@
 # directory to check it in the repository
 !.gitkeep
 
-# Whitelist circleci’s config directory
+# Whitelist CircleCI’s config directory
 !/.circleci
+
+# Whitelist Babel config file
+/.babelrc
 
 # Ignore modules
 /node_modules
