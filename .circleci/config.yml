@@ -1,0 +1,73 @@
+version: 2
+jobs:
+  lockfile:
+    docker:
+      - image: circleci/node:8.10.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package.json checksum
+            # when this file is changed, this key will fail
+            - v1-cache-lockfile-{{ arch }}-{{ checksum "package.json" }}
+
+      # Print versions
+      - run:
+          name: node-version
+          command: 'node --version'
+      - run:
+          name: npm-version
+          command: 'npm --version'
+
+      # Install dependencies
+      - run:
+          name: npm-install-global
+          command: 'sudo npm install -g greenkeeper-lockfile@1'
+
+      # Update lockfile
+      - run:
+          name: greenkeeper-lockfile-update
+          command: 'greenkeeper-lockfile-update'
+
+      # Upload lockfile
+      - run:
+          name: greenkeeper-lockfile-upload
+          command: 'greenkeeper-lockfile-upload'
+
+      # Save cache
+      - save_cache:
+          key: v1-cache-lockfile-{{ arch }}-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+  build:
+    working_directory: ~/app
+    docker:
+      - image: circleci/node:8.10.0
+    steps:
+      - checkout
+      - restore_cache:
+         keys:
+            # Find a cache corresponding to this specific package.json checksum
+            # when this file is changed, this key will fail
+            - v1-npm-deps-{{ arch }}-{{ checksum "package-lock.json" }}
+            # Find the most recent cache used from any branch
+            - v1-npm-deps-{{ arch }} # used if above checksum fails
+      - run: npm install
+      - save_cache:
+         key: v1-npm-deps-{{ arch }}-{{ checksum "package-lock.json" }}
+         paths:
+           - node_modules
+      - run: npm test
+workflows:
+  version: 2
+  lint_and_test:
+    jobs:
+      # greenkeeper-lockfile checks that CIRCLE_PREVIOUS_BUILD_NUM does not
+      # exist. It must be the first job in the workflow, since subsequent
+      # workflows will add CIRCLE_PREVIOUS_BUILD_NUM. In order to force the
+      # lockfile job to run first, every other job in the workflow must require
+      # the lockfile job to complete before running.
+      - lockfile
+      - build:
+          requires:
+            - lockfile

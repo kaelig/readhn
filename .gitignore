@@ -9,6 +9,9 @@
 # directory to check it in the repository
 !.gitkeep
 
+# Whitelist circleci’s config directory
+!/.circleci
+
 # Ignore modules
 /node_modules
 
