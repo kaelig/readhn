@@ -5,7 +5,7 @@ block content
     each story in stories
       article.js-story.story.u-faux-block-link(id=`story-${story.id}`, data-story-id= story.id)
         a.js-story__action.story__action.u-faux-block-link__overlay(href=story.instapaperUrl, tabindex="-1")
-          span.u-assistive-text(hidden)= story.title
+          span.u-assistive-text= story.title
         h2.story__title
           a(href=story.instapaperUrl, tabindex="0").story__title.u-link-no-underline
             = story.title
