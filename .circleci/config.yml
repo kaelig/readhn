@@ -60,7 +60,7 @@ jobs:
       - run: npm test
 workflows:
   version: 2
-  lint_and_test:
+  runner:
     jobs:
       # greenkeeper-lockfile checks that CIRCLE_PREVIOUS_BUILD_NUM does not
       # exist. It must be the first job in the workflow, since subsequent
