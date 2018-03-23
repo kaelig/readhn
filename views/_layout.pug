@@ -4,10 +4,10 @@ html(lang="en")
     meta(charset="utf-8")
     title Hacker News Top Stories
     meta(name="viewport", content="initial-scale=1")
-    link(rel="stylesheet", href="styles.css")
     link(rel="icon", href="/favicon.png", type="image/png")
     meta(name="apple-mobile-web-app-title", content="Hacker News")
-    script(src="app.js", defer)
+    style
+      include:clean-css ../public/styles.css
   body
     h1#top-stories.page-title Hacker News Top Stories
     nav.main-navigation
@@ -26,3 +26,5 @@ html(lang="en")
         a(href="https://github.com/kaelig/readhn") Contribute on GitHub
         = ` — `
         a(href="https://github.com/kaelig/readhn/issues") Report an issue
+    script
+      include:uglify-js:babel ../public/app.js
