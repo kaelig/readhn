@@ -2,14 +2,14 @@
   --breakpoint-medium: (min-width: 30em);
 
   --color-highlight: #0074bf;
-  --color-background: #F8F2E3;
+  --color-background: #f8f2e3;
   --color-body: #242424;
   --color-link: #242424;
   --color-link-hover: var(--color-highlight);
   --color-light: #81807c;
 
-  --spacing-small: .333333rem;
-  --spacing-medium: .5rem;
+  --spacing-small: 0.333333rem;
+  --spacing-medium: 0.5rem;
   --spacing-large: 1rem;
   --spacing-x-large: 1.5rem;
 
@@ -23,7 +23,6 @@
     --display-hide-small-screens: initial;
   }
 }
-
 
 *,
 *:before,
@@ -63,7 +62,7 @@ body {
 .story__action {
   outline: none;
   text-decoration: none;
-  transition: all .15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 .story__action:link {
   color: var(--color-link);
@@ -104,9 +103,9 @@ body {
 }
 
 .keyboard-shortcuts:after {
-    content:"";
-    display:table;
-    clear:both;
+  content: "";
+  display: table;
+  clear: both;
 }
 .keyboard-shortcuts__shortcut {
   display: block;
@@ -146,7 +145,6 @@ body {
 .kbd + .kbd {
   margin-left: 4px;
 }
-
 
 /**
  * Utility classes

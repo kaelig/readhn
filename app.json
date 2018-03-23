@@ -1,9 +1,7 @@
 {
   "name": "Hacker News Reader",
   "description": "A simple HN reader that's pretty simple and fast",
-  "keywords": [
-    "hacker news"
-  ],
+  "keywords": ["hacker news"],
   "website": "https://www.read.hn",
   "repository": "https://github.com/kaelig/readhn.git",
   "logo": "https://readhn.herokuapp.com/apple-touch-icon.png",
@@ -12,7 +10,7 @@
       "url": "heroku/nodejs"
     }
   ],
-  "addons": [ "memcachedcloud" ],
+  "addons": ["memcachedcloud"],
   "env": {
     "NUMBER_OF_STORIES": {
       "description": "Number of stories to show (default: 25)",
