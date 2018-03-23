@@ -69,11 +69,11 @@ app.use((req, res, next) => {
 app.set('view engine', 'pug')
 app.use(express.static('public', { maxAge: STATIC_MAX_AGE }))
 
-const getStory = (id) =>
+const fetchStory = (id) =>
   fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
     .then(data => data.json())
 
-const getStories = (numberOfStories = 50) =>
+const fetchStories = (numberOfStories = 50) =>
   fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
     .then(data => data.json())
     .then(topStories => topStories.slice(0, numberOfStories))
@@ -102,16 +102,16 @@ const buildStoriesObject = ({
     instapaperUrl: `https://www.instapaper.com/text?u=${encodeURIComponent(url)}`
   })
 
-const getTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
-  getStories()
+const fetchTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
+  fetchStories()
     .then(topStories =>
-      Promise.all(topStories.map(getStory))
-      .then(bodies =>
-        bodies
-          .filter(isActualStory)
-          .slice(0, numberOfStories)
-          .map(buildStoriesObject)
-        )
+      Promise.all(topStories.map(fetchStory))
+        .then(bodies =>
+          bodies
+            .filter(isActualStory)
+            .slice(0, numberOfStories)
+            .map(buildStoriesObject)
+          )
     )
 
 app.get('/', (req, res) =>
@@ -121,7 +121,7 @@ app.get('/', (req, res) =>
       log(`Loading cached stories: ${cached.toString()}`)
       res.render('index', { stories: JSON.parse(cached) })
     } else {
-      getTopStoriesWithLinks()
+      fetchTopStoriesWithLinks()
         .then(stories => {
           mjs.set(
             'hnstories',
