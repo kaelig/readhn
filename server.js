@@ -51,8 +51,8 @@ app.use(morgan("dev"));
 app.locals.MEMCACHE_AGE = MEMCACHE_AGE;
 
 // Automatically redirect to https
-app.set("trust proxy", "loopback");
-app.use((req, res, next) => {
+app.enable("trust proxy");
+app.use("*", (req, res, next) => {
   if (req.secure || process.env.NODE_ENV !== "production") {
     // request was via https or handled locally, so do no special handling
     next();
