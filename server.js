@@ -51,15 +51,15 @@ app.use(morgan("dev"));
 app.locals.MEMCACHE_AGE = MEMCACHE_AGE;
 
 // Automatically redirect to https
-app.use((req, res, next) => {
-  if (
-    req.header("x-forwarded-proto") == "http" &&
-    process.env.NODE_ENV === "production"
-  ) {
-    res.redirect(301, `https://${req.headers.host + req.url}`);
-    return;
+app.enable("trust proxy");
+app.use("*", (req, res, next) => {
+  if (req.secure || process.env.NODE_ENV !== "production") {
+    // request was via https or handled locally, so do no special handling
+    next();
+  } else {
+    // request was via http, so redirect to https
+    res.redirect(`https://${req.headers.host + req.url}`);
   }
-  next();
 });
 
 app.set("view engine", "pug");
