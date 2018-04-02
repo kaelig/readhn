@@ -11,22 +11,22 @@ block content
   section.js-top-stories.top-stories(aria-labelledby="top-stories")
     each story in stories
       article.js-story.story.u-faux-block-link(id=`story-${story.id}`, data-story-id= story.id)
-        a.js-story__action.story__action.u-faux-block-link__overlay(href=story.instapaperUrl, tabindex="-1")
+        a.js-story__action.story__action.u-faux-block-link__overlay(href=story.instapaperUrl, tabindex="-1", rel="noopener noreferrer")
           span.u-assistive-text= story.title
         h2.story__title
-          a(href=story.instapaperUrl, tabindex="0").story__title.u-link-no-underline
+          a(href=story.instapaperUrl, tabindex="0", rel="noopener noreferrer").story__title.u-link-no-underline
             = story.title
         div.story__meta
-          a(href=story.url).js-original-url.u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover
+          a(href=story.url, rel="noopener noreferrer").js-original-url.u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover
             span.u-assistive-text Read original story on
               = " "
             = story.hostname
           =` – ${story.by} – `
-          a(href=`https://news.ycombinator.com/item?id=${story.id}`).u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover
+          a(href=`https://news.ycombinator.com/item?id=${story.id}`, rel="noopener noreferrer").u-faux-block-link__promote.u-color-light.u-link-no-underline.u-link-underline-hover
             = story.relativeTime
 append footer
   p
-    a(href="https://github.com/kaelig/readhn/blob/master/README.md#why-do-stories-open-in-instapaper") Why do I need an Instapaper account?
+    a(href="https://github.com/kaelig/readhn/blob/master/README.md#why-do-stories-open-in-instapaper", rel="noopener noreferrer") Why do I need an Instapaper account?
   .u-hide-on-small-screens
     h1.heading-primary Keyboard navigation
     dl.keyboard-shortcuts
