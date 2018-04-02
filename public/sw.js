@@ -4,15 +4,6 @@ const CACHE = "readhn-v2";
 // to the cache. Return a promise resolving when all the assets are added.
 const precache = () => caches.open(CACHE).then(cache => cache.add("/"));
 
-const update = request =>
-  caches
-    .open(CACHE)
-    .then(cache =>
-      fetch(request).then(response =>
-        cache.put(request, response.clone()).then(() => response)
-      )
-    );
-
 // Time limited network request. If the network fails or the response is not
 // served before timeout, the promise is rejected.
 const fromNetwork = (request, timeout) =>
@@ -22,6 +13,9 @@ const fromNetwork = (request, timeout) =>
     // Fulfill in case of success.
     fetch(request).then(response => {
       clearTimeout(timeoutId);
+      const responseClone = response.clone();
+      // Re-cache the latest version of the page
+      caches.open(CACHE).then(cache => cache.put(request, responseClone));
       fulfill(response);
       // Reject also if network fetch rejects.
     }, reject);
@@ -59,8 +53,6 @@ self.addEventListener("fetch", evt => {
 
   // Try network and if it fails, go for the cached copy.
   evt.respondWith(
-    fromNetwork(evt.request, 2000)
-      .then(() => update(evt.request))
-      .catch(() => fromCache(evt.request))
+    fromNetwork(evt.request, 2000).catch(() => fromCache(evt.request))
   );
 });
