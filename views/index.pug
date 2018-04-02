@@ -1,5 +1,12 @@
 extends _layout
 
+//- Prefetch the top 10 stories for faster loading
+block prefetch
+  - let n = 0;
+  while n < 10
+    link(rel="prefetch", as="document", href=stories[n].instapaperUrl)
+    - n++
+
 block content
   section.js-top-stories.top-stories(aria-labelledby="top-stories")
     each story in stories
