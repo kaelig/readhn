@@ -32,13 +32,13 @@
     "jstransformer-clean-css": "^2.1.0",
     "jstransformer-uglify-js": "^1.2.0",
     "memjs": "^1.2.0",
-    "moment": "^2.21.0",
+    "moment": "^2.22.0",
     "morgan": "^1.9.0",
     "pug": "^2.0.3"
   },
   "devDependencies": {
     "jest": "^22.4.3",
-    "nodemon": "^1.17.2",
+    "nodemon": "^1.17.3",
     "prettier": "^1.11.1"
   }
 }
