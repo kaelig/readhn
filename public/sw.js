@@ -53,6 +53,6 @@ self.addEventListener("fetch", evt => {
 
   // Try network and if it fails, go for the cached copy.
   evt.respondWith(
-    fromNetwork(evt.request, 2000).catch(() => fromCache(evt.request))
+    fromNetwork(evt.request, 4000).catch(() => fromCache(evt.request))
   );
 });
