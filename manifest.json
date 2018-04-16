@@ -1,0 +1,26 @@
+{
+  "name": "Hacker News Top Stories",
+  "short_name": "Hacker News",
+  "icons": [
+    {
+      "type": "image/png",
+      "sizes": "192x192",
+      "src": "https://www.read.hn/icon-round-192.png"
+    },
+    {
+      "type": "image/png",
+      "sizes": "152x152",
+      "src": "https://www.read.hn/icon-round-142.png"
+    },
+    {
+      "type": "image/png",
+      "sizes": "114x114",
+      "src": "https://www.read.hn/icon-round-114.png"
+    }
+  ],
+  "theme_color": "#242424",
+  "background_color": "#f8f2e3",
+  "start_url": "/",
+  "display": "browser",
+  "orientation": "portrait"
+}
