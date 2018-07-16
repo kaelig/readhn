@@ -12,7 +12,6 @@ A simple, fast, and accessible Hacker News top stories reader.
 
 [![Screenshot of read.hn](https://cloud.githubusercontent.com/assets/85783/24538324/47eb078e-159d-11e7-970a-906cd742a939.png)](https://www.read.hn)
 
-
 ----
 
 ## Why do stories open in Instapaper?
