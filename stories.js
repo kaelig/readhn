@@ -30,6 +30,9 @@ const fetchTopStories = numberOfStories =>
 // and other stories are external "actual" stories
 const isActualStory = story => !!story.url;
 
+const isExcludedFromInstapaper = url =>
+  ["https://www.bloomberg.com"].some(domain => url.startsWith(domain));
+
 const buildStoriesObject = ({ id, title, time, url, score, by }) => ({
   id,
   title: startCase(title),
@@ -39,7 +42,9 @@ const buildStoriesObject = ({ id, title, time, url, score, by }) => ({
   score,
   by,
   hostname: new URL(url).hostname,
-  instapaperUrl: `https://www.instapaper.com/text?u=${encodeURIComponent(url)}`
+  instapaperUrl: isExcludedFromInstapaper(url)
+    ? url
+    : `https://www.instapaper.com/text?u=${encodeURIComponent(url)}`
 });
 
 const fetchTopStoriesWithLinks = (numberOfStories = NUMBER_OF_STORIES) =>
