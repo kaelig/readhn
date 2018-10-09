@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev": "DEBUG=readhn nodemon -e js,pug,json -w . -w public",
-    "prettier": "prettier --write '**/*.{js,json}'"
+    "prettier": "prettier --write '**/*.{js,json,html}'"
   },
   "engines": {
     "node": "8",
@@ -23,22 +23,22 @@
   },
   "homepage": "https://www.read.hn",
   "dependencies": {
-    "babel-preset-env": "^1.6.1",
-    "compression": "^1.7.2",
-    "debug": "^3.1.0",
+    "babel-preset-env": "^1.7.0",
+    "compression": "^1.7.3",
+    "debug": "^4.1.0",
     "express": "^4.16.3",
     "isomorphic-fetch": "^2.2.1",
     "jstransformer-babel": "^2.1.0",
     "jstransformer-clean-css": "^2.1.0",
     "jstransformer-uglify-js": "^1.2.0",
     "memjs": "^1.2.0",
-    "moment": "^2.22.1",
-    "morgan": "^1.9.0",
+    "moment": "^2.22.2",
+    "morgan": "^1.9.1",
     "pug": "^2.0.3"
   },
   "devDependencies": {
-    "jest": "^22.4.3",
-    "nodemon": "^1.17.3",
-    "prettier": "^1.12.0"
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.4",
+    "prettier": "^1.14.3"
   }
 }
