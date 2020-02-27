@@ -33,4 +33,4 @@ html(lang="en")
         = ` — `
         a(href="https://github.com/kaelig/readhn/issues") Report an issue
     script
-      include:uglify-js:babel ../public/app.js
+      include:uglify-es(compress={toplevel:true}) ../public/app.js
