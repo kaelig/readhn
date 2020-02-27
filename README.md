@@ -12,8 +12,7 @@ A simple, fast, and accessible Hacker News top stories reader.
 
 [![Screenshot of read.hn](https://cloud.githubusercontent.com/assets/85783/24538324/47eb078e-159d-11e7-970a-906cd742a939.png)](https://www.read.hn)
 
-
-----
+---
 
 ## Why do stories open in Instapaper?
 
@@ -33,7 +32,7 @@ Stories open in Instapaper and look something like this:
 
 Note: you can still access the original stories by clicking the domain name below each story title.
 
-----
+---
 
 ## Keyboard navigation
 
@@ -42,7 +41,7 @@ Note: you can still access the original stories by clicking the domain name belo
 - <kbd>alt</kbd> + <kbd>⏎</kbd> read story on original site
 - <kbd>c</kbd> open the comments
 
-----
+---
 
 ## Contributing
 
@@ -55,14 +54,14 @@ If you’d like to suggest a change or adding a feature, it is recommended to op
 1. Create a fork of this repository
 1. Clone the repository on your machine
 1. `cd` into the directory
-1. run `npm install`
-1. run `npm run dev`
+1. run `yarn install`
+1. run `yarn run dev`
 
 ### Make changes, open a pull request
 
 Commit your changes in a clear an concise manner, then push your changes and open a pull request.
 
-----
+---
 
 ## Deploy to Heroku
 
